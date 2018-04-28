@@ -1,27 +1,80 @@
-# DatePicker
+# ngx-date-picker-component
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+Angular Directive to add virtual scroll.
 
-## Development server
+Live Demo : https://mraghuram3.github.io/#/ngx-date-picker-component
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+To install this library, run:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+$ npm install ngx-date-picker-component --save
+```
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Usage
 
-## Running unit tests
+Import `NgxDatePickerModule ` in the root module
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```ts
+import { NgxDatePickerModule  } from 'ngx-date-picker-component';
 
-## Running end-to-end tests
+@NgModule({
+  imports: [
+    // ...
+    NgxDatePickerModule,
+    ...
+  ]
+})
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+In your template
 
-## Further help
+```html
+<ngx-date-picker [mode]="'dropdown'" [format]="'DD-MM-YYYY'" (selected)="selectedDate($event)"></ngx-date-picker>
+```
+- **ngxVirtualScroll**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  Add the directive to the div or other dom in which the elemnts are to be loaded 
+
+- **[mode]**: string.
+
+  'dropdown' and 'inline' can be passed to enable respective mode.
+
+- **[format]**: string.
+
+  To change the date format of the displayed selected date. 
+
+- **(selected)="selectedDate($event)"**:
+
+  On selecting a date event with the selected date object will be emitted. 
+
+```ts
+displayData = [];
+actualIndex = 0;
+.....
+......
+onChangeData(event: any) {
+    this.displayData = event.data;
+    this.actualIndex = event.startIndex;
+  }
+```
+
+- **ngxVirtualScrollElement**
+
+  Add the directive to the div for row elements of the virtual scroll.
+
+- **[minRowHeight]**: number.
+
+  The minimum height of the row in pixels.
+
+- **[rangeStart]**: number.
+
+  Pass the data from change event.
+
+  ** include other inputs in ngxVirtualScrollElement row, like ngFor and [elemIndex] **
+
+## License
+
+MIT © [Raghu Ram M](mailto:mraghuram3@gmail.com)
