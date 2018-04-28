@@ -1,0 +1,51 @@
+
+<div class="dropdown" *ngIf="_mode === 'dropdown'">
+  <button (click)="toggle();" class="dropbtn" > {{selecteddateIntext}}</button>
+    <div id="myDropdown" class="dropdown-content" [ngClass]="{'show':dropdown}">
+      <div *ngIf="true; then datepicker" >
+        
+     </div>
+    </div>
+</div>
+
+<div  *ngIf="_mode === 'inline'" >
+        <div *ngIf="true; then datepicker" > </div>
+</div>
+
+
+
+  <ng-template #datepicker>
+    <div style="width:325px;height:316px;">
+      <div class="month">      
+        <ul>
+          <li class="prev" (click)="decreaseMonth();">&#10094;</li>
+          <li class="next" (click)="increaseMonth();">&#10095;</li>
+          <li>
+            {{currentMonthInWords}}
+            <span style="font-size:18px"><input type="number" min=0 max=3000 [(ngModel)]="currentYear" (change)="changeInYear()"></span>
+          </li>
+        </ul>
+      </div>
+      
+      <ul class="weekdays">
+        <li>Su</li>
+        <li>Mo</li>
+        <li>Tu</li>
+        <li>We</li>
+        <li>Th</li>
+        <li>Fr</li>
+        <li>Sa</li>
+      </ul>
+      
+      <ul class="days">  
+        
+        <li *ngFor="let d of weekObject[0]" (click)="selectedDate(d);"><span [ngClass]=" d?.date - selecteddate === 0?'active':''" >{{d?.day}}</span></li>
+        <li *ngFor="let d of weekObject[1]" (click)="selectedDate(d);"><span [ngClass]=" d?.date - selecteddate === 0?'active':''" >{{d?.day}}</span></li>
+        <li *ngFor="let d of weekObject[2]" (click)="selectedDate(d);"><span [ngClass]=" d?.date - selecteddate === 0?'active':''" >{{d?.day}}</span></li>
+        <li *ngFor="let d of weekObject[3]" (click)="selectedDate(d);"><span [ngClass]=" d?.date - selecteddate === 0?'active':''" >{{d?.day}}</span></li>
+        <li *ngFor="let d of weekObject[4]" (click)="selectedDate(d);"><span [ngClass]=" d?.date - selecteddate === 0?'active':''" >{{d?.day}}</span></li>
+        <li *ngFor="let d of weekObject[5]" (click)="selectedDate(d);"><span [ngClass]=" d?.date - selecteddate === 0?'active':''" >{{d?.day}}</span></li>
+        <li *ngFor="let d of weekObject[6]" (click)="selectedDate(d);"><span [ngClass]=" d?.date - selecteddate === 0?'active':''" >{{d?.day}}</span></li>
+      </ul>
+      </div>
+ </ng-template>
