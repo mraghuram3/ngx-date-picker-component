@@ -34,9 +34,6 @@ In your template
 ```html
 <ngx-date-picker [mode]="'dropdown'" [format]="'DD-MM-YYYY'" (selected)="selectedDate($event)"></ngx-date-picker>
 ```
-- **ngxVirtualScroll**
-
-  Add the directive to the div or other dom in which the elemnts are to be loaded 
 
 - **[mode]**: string.
 
@@ -50,30 +47,6 @@ In your template
 
   On selecting a date event with the selected date object will be emitted. 
 
-```ts
-displayData = [];
-actualIndex = 0;
-.....
-......
-onChangeData(event: any) {
-    this.displayData = event.data;
-    this.actualIndex = event.startIndex;
-  }
-```
-
-- **ngxVirtualScrollElement**
-
-  Add the directive to the div for row elements of the virtual scroll.
-
-- **[minRowHeight]**: number.
-
-  The minimum height of the row in pixels.
-
-- **[rangeStart]**: number.
-
-  Pass the data from change event.
-
-  ** include other inputs in ngxVirtualScrollElement row, like ngFor and [elemIndex] **
 
 ## License
 
